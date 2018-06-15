@@ -5,8 +5,37 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DatasetToDatabase"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="Precipitation Dataset Converter" Height="450" Width="600" ResizeMode="NoResize" WindowStartupLocation="CenterScreen" Loaded="Window_Loaded" Closed="Window_Closed" Closing="Window_Closing">
     <Grid>
-        
+        <GroupBox Header="File Information" Height="100" Margin="10,10,10,0" VerticalAlignment="Top">
+            <Grid>
+                <Label Content="Input File:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Width="75"/>
+                <TextBox x:Name="Txt_InputFile" HorizontalAlignment="Left" Height="23" Margin="80,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350"/>
+                <Button x:Name="Btn_Select" Content="Select" HorizontalAlignment="Left" Margin="443,10,0,0" VerticalAlignment="Top" Width="100" Click="Btn_Select_Click"/>
+                <Label Content="Output File:" HorizontalAlignment="Left" Margin="5,45,0,0" VerticalAlignment="Top" Width="75"/>
+                <TextBox x:Name="Txt_OutputFile" HorizontalAlignment="Left" Height="23" Margin="80,45,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="350"/>
+                <Button x:Name="Btn_Convert" Content="Convert" HorizontalAlignment="Left" Margin="443,47,0,0" VerticalAlignment="Top" Width="100" Click="Btn_Convert_Click"/>
+            </Grid>
+        </GroupBox>
+        <GroupBox Header="Log" Margin="10,115,10,10">
+            <Grid>
+                <ListBox x:Name="Lst_Log" Margin="1,0,1,30" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding}" TextWrapping="WrapWithOverflow"/>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                    <ListBox.ItemContainerStyle>
+                        <Style TargetType="{x:Type ListBoxItem}">
+                            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+                            <Setter Property="VerticalContentAlignment" Value="Center"/>
+                        </Style>
+                    </ListBox.ItemContainerStyle>
+                </ListBox>
+                <ProgressBar x:Name="PBar_Progress" HorizontalAlignment="Left" Width="562" Height="24" VerticalAlignment="Bottom"/>
+                <Label x:Name="Lbl_ProgressTxt" FontSize="12" Content="" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,240,0,0" HorizontalAlignment="Right" Width="562" Height="25" VerticalAlignment="Top"/>
+            </Grid>
+        </GroupBox>
+
     </Grid>
 </Window>
